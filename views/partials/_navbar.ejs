@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="/_navbar.css">
+<nav>
+    <a href="/">Home</a>
+    <% if (user) { %>
+     <a href="/users/<%= user._id %>/exercises">Logbook</a>
+     <a href="/socials">Community</a>
+     <a href="/authentication/sign-out">Sign Out</a>
+    <% } else { %>
+        <a href="/authentication/sign-in">Sign In</a>
+        <a href="/authentication/sign-up">Sign Up</a>
+    <% } %>
+</nav>
