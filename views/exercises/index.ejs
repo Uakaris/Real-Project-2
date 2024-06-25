@@ -9,25 +9,25 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Logbook</h1>
     <a href="/exercises/new">Log a new exercise</a>
-    <ul>
-        <% exercises.forEach((exercise) => { %>
-         <li>
-            <%= exercise.exercise %> 
-            <% if (exercise.weight) { %>
-                @ <%= exercise.weight %>kg.
-            <% } %> 
-            <%= exercise.reps %> reps for 
-            <% if (exercise.sets === 1) { %>
-                <%= exercise.sets %> set.
-            <% } else { %>
-            <%= exercise.sets %> sets. 
-            <% } %>
-            <% if (exercise.notes) { %>
-                Notes: <%= exercise.notes %>
-            <% } %>
-            <a href="/exercises/<%= exercise._id %>/edit">Edit or Delete entry</a>
-         </li>
-        <% }) %>
-    </ul>
+        <ul>
+            <% exercises.forEach((exercise) => { %>
+             <li>
+                <%= exercise.exercise %> 
+                <% if (exercise.weight) { %>
+                    @ <%= exercise.weight %>kg.
+                <% } %> 
+                <%= exercise.reps %> reps for 
+                <% if (exercise.sets === 1) { %>
+                    <%= exercise.sets %> set.
+                <% } else { %>
+                <%= exercise.sets %> sets. 
+                <% } %>
+                <% if (exercise.notes) { %>
+                    Notes: <%= exercise.notes %>
+                <% } %>
+                <a href="/exercises/<%= exercise._id %>/edit">Edit or Delete entry</a>
+             </li>
+            <% }) %>
+        </ul>
 </body>
 </html>

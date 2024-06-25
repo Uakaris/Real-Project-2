@@ -2,12 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const Exercise = require('../models/exercise');
+const User = require('../models/user.js');
 
 // Home
 router.get('/', async (req, res) => {
     try {
         const exercises = await Exercise.find({}).populate('user');
-        console.log(exercises);
+        const user = await User.findById(req.session.user._id);
+        const index = exercises.user.findIndex((exercise)=> exercise._id === req.session.user._id)
+        console.log(index);
+        console.log(user);
         res.render('exercises/index.ejs', {
             exercises: exercises
         });

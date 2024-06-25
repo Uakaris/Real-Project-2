@@ -9,7 +9,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    // logbook: [exerciseSchema]
 });
 
 const User = mongoose.model('User', userSchema);
