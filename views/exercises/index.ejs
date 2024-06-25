@@ -12,18 +12,14 @@
         <ul>
             <% exercises.forEach((exercise) => { %>
              <li>
-                <%= exercise.exercise %> 
+                <h2><%= exercise.exercise %> </h2>
+                <p>Sets: <%= exercise.sets %></p>
+                <p>Reps: <%= exercise.reps %></p>
                 <% if (exercise.weight) { %>
-                    @ <%= exercise.weight %>kg.
+                    <p><%= exercise.weight %>kg</p> 
                 <% } %> 
-                <%= exercise.reps %> reps for 
-                <% if (exercise.sets === 1) { %>
-                    <%= exercise.sets %> set.
-                <% } else { %>
-                <%= exercise.sets %> sets. 
-                <% } %>
                 <% if (exercise.notes) { %>
-                    Notes: <%= exercise.notes %>
+                    <p>Notes: <%= exercise.notes %></p>
                 <% } %>
                 <a href="/exercises/<%= exercise._id %>/edit">Edit or Delete entry</a>
              </li>

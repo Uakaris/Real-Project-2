@@ -21,13 +21,15 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-        const exercises = await Exercise.find({ user: req.params.id });
         if (!user) {
             return res.status(404).send('User not found');
         }
+        const exercises = await Exercise.find({ user: req.params.id });
+
+        user.exercises = exercises;
+
         res.render('users/show.ejs', {
-            user: user,
-            exercises: exercises
+            user: user
         });
     } catch (error) {
         console.log(error);

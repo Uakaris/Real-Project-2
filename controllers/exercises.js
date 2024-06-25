@@ -17,22 +17,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const exercises = await Exercise.find({}).populate('user');
-//         const user = await User.findById(req.session.user._id);
-//         const index = exercises.user.findIndex((exercise)=> exercise._id === req.session.user._id)
-//         console.log(index);
-//         console.log(user);
-//         res.render('exercises/index.ejs', {
-//             exercises: exercises
-//         });
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/');
-//     }
-// });
-
 // New
 router.get('/new', (req, res) => {
     res.render('exercises/new.ejs');
