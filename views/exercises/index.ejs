@@ -12,8 +12,20 @@
     <ul>
         <% exercises.forEach((exercise) => { %>
          <li>
-            <%= exercise.exercise %> @ <%= exercise.weight %>kg. <%= exercise.reps %> reps for <%= exercise.sets %> set/s. Notes: <%= exercise.notes %>
-            <!-- <a href="/exercises/<%= exercise._id %>">More details</a> -->
+            <%= exercise.exercise %> 
+            <% if (exercise.weight) { %>
+                @ <%= exercise.weight %>kg.
+            <% } %> 
+            <%= exercise.reps %> reps for 
+            <% if (exercise.sets === 1) { %>
+                <%= exercise.sets %> set.
+            <% } else { %>
+            <%= exercise.sets %> sets. 
+            <% } %>
+            <% if (exercise.notes) { %>
+                Notes: <%= exercise.notes %>
+            <% } %>
+            <a href="/exercises/<%= exercise._id %>/edit">Edit or Delete entry</a>
          </li>
         <% }) %>
     </ul>

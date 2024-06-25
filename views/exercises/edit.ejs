@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>: Edit Entry</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Edit Entry</h1>
+    <form action="/exercises/<%= exercise._id %>?_method=PUT" method="post">
+        <label for="exercise">Exercise</label>
+        <input list="exercises" name="exercise" value="<%= exercise.exercise %>"/>
+        <label>
+            Sets:
+            <input name="sets" type="number" min="1" required value="<%= exercise.sets %>">
+        </label>
+        <label>
+            Reps:
+            <input name="reps" type="number" min="1" required value="<%= exercise.reps %>">
+        </label>
+        <label>
+            Weight:
+            <input name="weight" type="number" min="0" value="<%= exercise.weight %>">
+        </label>
+        <label>
+            Notes:
+            <textarea name="notes"><%= exercise.notes %></textarea>
+        </label>
+        <button>Add edited exercise</button>
+    </form>
+    <form action="/exercises/<%= exercise._id %>?_method=DELETE" method="post">
+        <button>Delete Entry</button>
+    </form>
+</body>
+</html>
