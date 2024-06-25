@@ -11,9 +11,13 @@
     <h2><%= user.username %></h2>
     <h3>Logbook</h3>
     <ul>
-        <% user.logbook.forEach((item) => { %>
-         <li><%= item.exercise %></li>
-        <% }) %>
+        <% if (user && user.exercises) { %>
+            <% user.exercises.forEach((exercise) => { %>
+                <li><%= exercise.exercise %></li>
+            <% }) %>
+        <% } else { %>
+            <li>No exercises found.</li>
+        <% } %>
     </ul>
     <a href="/socials">Back to Community</a>
 </body>

@@ -12,6 +12,7 @@ const passGlobalDataToViews = require('./middleware/passGlobalDataToViews');
 
 const authenticationController = require('./controllers/authentication');
 const exercisesController = require('./controllers/exercises');
+const socialsController = require('./controllers/socials');
 // add more controllers here
 
 const port = process.env.PORT ? process.env.PORT : '3000';
@@ -42,7 +43,7 @@ server.get('/', (req, res) => {
 });
 
 server.use('/authentication', authenticationController);
-// add more use things here
+server.use('/socials', socialsController);
 server.use('/exercises', ensureLoggedIn, exercisesController);
 server.use(express.static('public'));
 
