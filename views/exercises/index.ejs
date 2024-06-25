@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logbook</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Logbook</h1>
+    <a href="/exercises/new">Log a new exercise</a>
+    <ul>
+        <% exercises.forEach((exercise) => { %>
+         <li>
+            <%= exercise.exercise %> @ <%= exercise.weight %>kg. <%= exercise.reps %> reps for <%= exercise.sets %> set/s. Notes: <%= exercise.notes %>
+            <!-- <a href="/exercises/<%= exercise._id %>">More details</a> -->
+         </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

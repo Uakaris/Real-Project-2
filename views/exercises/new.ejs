@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Exercise</title>
+</head>
+<body>
+    <h1>New Exercise</h1>
+    <form action="/exercises" method="post">
+        <label for="exercise">Exercise</label>
+        <input list="exercises" name="exercise"/>
+        <datalist id="exercises">
+            <option value="back squat"></option>
+            <option value="barbell back rack reverse lunge"></option>
+            <option value="barbell good morning"></option>
+            <option value="behind the neck press"></option>
+            <option value="bench press"></option>
+            <option value="bent over dumbbell row"></option>
+            <option value="chin up"></option>
+            <option value="clean"></option>
+            <option value="clean pull"></option>
+            <option value="dumbbell box step up"></option>
+            <option value="deadlift"></option>
+            <option value="deficit deadlift"></option>
+            <option value="dumbbell bench press"></option>
+            <option value="front squat"></option>
+            <option value="hang clean"></option>
+            <option value="hang muscle snatch"></option>
+            <option value="hang power clean"></option>
+            <option value="hang power clean + push jerk"></option>
+            <option value="hang snatch"></option>
+            <option value="hang power snatch"></option>
+            <option value="hang squat snatch"></option>
+            <option value="hip clean"></option>
+            <option value="hip snatch"></option>
+            <option value="low hang power clean"></option>
+            <option value="low hang snatch + overhead squat"></option>
+            <option value="overhead squat"></option>
+            <option value="power clean"></option>
+            <option value="power clean + jerk"></option>
+            <option value="power snatch"></option>
+            <option value="push jerk"></option>
+            <option value="push press"></option>
+            <option value="romanian deadlift"></option>
+            <option value="seated barbell strict press"></option>
+            <option value="single arm dumbbell row"></option>
+            <option value="snatch"></option>
+            <option value="strict press"></option>
+            <option value="pull up"></option>
+            <option value="bar muscle up"></option>
+            <option value="ring muscle up"></option>
+            <option value="strict ring muscle up"></option>
+            <option value="strict handstand push up"></option>
+        </datalist>
+        <label>
+            Sets:
+            <input name="sets" type="number" min="1" required>
+        </label>
+        <label>
+            Reps:
+            <input name="reps" type="number" min="1" required>
+        </label>
+        <label>
+            Weight:
+            <input name="weight" type="number" min="0">
+        </label>
+        <label>
+            Notes:
+            <textarea name="notes"></textarea>
+        </label>
+        <button>Add exercise</button>
+    </form>
+</body>
+</html>
