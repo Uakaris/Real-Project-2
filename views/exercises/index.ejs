@@ -12,7 +12,7 @@
         <ul>
             <% exercises.forEach((exercise) => { %>
              <li>
-                <h2><%= exercise.exercise %> </h2>
+                <h2><a href="/exercises/<%= exercise._id %>"><%= exercise.exercise %></a></h2>
                 <p>Sets: <%= exercise.sets %></p>
                 <p>Reps: <%= exercise.reps %></p>
                 <% if (exercise.weight) { %>

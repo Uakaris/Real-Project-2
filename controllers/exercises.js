@@ -8,6 +8,7 @@ const User = require('../models/user.js');
 router.get('/', async (req, res) => {
     try {
         const exercises = await Exercise.find({ user: req.session.user._id }).populate('user');
+        
         res.render('exercises/index.ejs', {
             exercises: exercises
         });
@@ -34,6 +35,24 @@ router.post ('/', async (req, res) => {
 })
 
 // Index
+router.get('/:id', async (req, res) => {
+    try {
+        const exercise = await Exercise.findById(req.params.id);
+        
+        const exerciseHistory = await Exercise.find({
+            user: req.session.user._id,
+            exercise: exercise.exercise
+        }).sort({ createdAt: 'desc' });
+
+        res.render('exercises/show.ejs', {
+            exercise: exercise,
+            exerciseHistory: exerciseHistory
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
 
 // Edit
 router.get('/:id/edit', async (req, res) => {
@@ -78,17 +97,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const exercise = await Exercise.findById(req.params.id);
-//         if (exercise.user.equals(req.session.user._id)) {
-//             await exercise.deleteOne();
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-//     res.redirect('/exercises');
-// });
 
 module.exports = router;

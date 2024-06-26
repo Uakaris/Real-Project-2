@@ -1,0 +1,36 @@
+<!-- views/exercises/show.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Details</title>
+</head>
+<body>
+    <% include('../partials/_navbar.ejs') %>
+    <h1><%= exercise.exercise %></h1>
+
+    <h3>Exercise History</h3>
+    <% if (exerciseHistory && exerciseHistory.length > 0) { %>
+        <ul>
+            <% exerciseHistory.forEach((historyItem) => { %>
+                <li>
+                    <p>Sets: <%= historyItem.sets %></p>
+                    <p>Reps: <%= historyItem.reps %></p>
+                    <% if (historyItem.weight) { %>
+                        <p>Weight: <%= historyItem.weight %> kg</p>
+                    <% } %>
+                    <% if (historyItem.notes) { %>
+                        <p>Notes: <%= historyItem.notes %></p>
+                    <% } %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No history found for this exercise.</p>
+    <% } %>
+
+    <a href="/exercises">Back to Logbook</a>
+</body>
+</html>
