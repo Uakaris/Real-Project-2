@@ -8,28 +8,29 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Edit Entry</h1>
-    <form action="/exercises/<%= exercise._id %>?_method=PUT" method="post">
+    <!-- <form action="/exercises/<%= exercise._id %>?_method=PUT" method="post"> -->
+    <form action="/exercises/<%= exercise._id %>/<%= historyItem._id %>?_method=PUT" method="post">
         <label for="exercise">Exercise</label>
         <input list="exercises" name="exercise" value="<%= exercise.exercise %>"/>
         <label>
             Sets:
-            <input name="sets" type="number" min="1" required value="<%= exercise.sets %>">
+            <input type="number" name="sets" value="<%= historyItem.sets %>" required>
         </label>
         <label>
             Reps:
-            <input name="reps" type="number" min="1" required value="<%= exercise.reps %>">
+            <input type="number" name="reps"  min="1" value="<%= historyItem.reps %>" required>
         </label>
         <label>
             Weight:
-            <input name="weight" type="number" min="0" value="<%= exercise.weight %>">
+            <input type="number" name="weight" min="0" value="<%= historyItem.weight %>">
         </label>
         <label>
             Notes:
-            <textarea name="notes"><%= exercise.notes %></textarea>
+            <textarea name="notes"><%= historyItem.notes %></textarea>
         </label>
         <button>Add edited exercise</button>
     </form>
-    <form action="/exercises/<%= exercise._id %>?_method=DELETE" method="post">
+    <form action="/exercises/<%= exercise._id %>/<%= historyItem._id %>?_method=DELETE" method="post">
         <button>Delete Entry</button>
     </form>
 </body>

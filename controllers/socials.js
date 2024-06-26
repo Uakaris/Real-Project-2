@@ -24,7 +24,9 @@ router.get('/:id', async (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
-        const exercises = await Exercise.find({ user: req.params.id });
+        const exercises = await Exercise.find({ user: req.params.id })
+        .sort({ createdAt: 'desc' })
+        .exec();
 
         user.exercises = exercises;
 

@@ -1,5 +1,3 @@
-<!-- views/exercises/show.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +6,8 @@
     <title>Exercise Details</title>
 </head>
 <body>
-    <% include('../partials/_navbar.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
     <h1><%= exercise.exercise %></h1>
-
     <h3>Exercise History</h3>
     <% if (exerciseHistory && exerciseHistory.length > 0) { %>
         <ul>
@@ -24,13 +21,15 @@
                     <% if (historyItem.notes) { %>
                         <p>Notes: <%= historyItem.notes %></p>
                     <% } %>
+                    <a href="/exercises/<%= exercise._id %>/<%= historyItem._id %>/edit">Edit or Delete entry</a>
+
+                    <!-- <a href="/exercises/<%= exercise._id %>/edit">Edit or Delete entry</a> -->
                 </li>
             <% }) %>
         </ul>
     <% } else { %>
         <p>No history found for this exercise.</p>
     <% } %>
-
     <a href="/exercises">Back to Logbook</a>
 </body>
 </html>

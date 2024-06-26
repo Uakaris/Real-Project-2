@@ -9,21 +9,24 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Logbook</h1>
     <a href="/exercises/new">Log a new exercise</a>
-        <ul>
-            <% exercises.forEach((exercise) => { %>
-             <li>
+    <ul>
+        <% 
+        // Object to store the latest exercise entry for each exercise type
+        const latestEntries = {};
+
+        exercises.forEach((exercise) => {
+            // Check if this exercise type is already in latestEntries
+            if (!latestEntries[exercise.exercise] || exercise.createdAt > latestEntries[exercise.exercise].createdAt) {
+                latestEntries[exercise.exercise] = exercise;
+            }
+        });
+
+        // Iterate through latestEntries to display unique exercise types
+        Object.values(latestEntries).forEach((exercise) => { %>
+            <li>
                 <h2><a href="/exercises/<%= exercise._id %>"><%= exercise.exercise %></a></h2>
-                <p>Sets: <%= exercise.sets %></p>
-                <p>Reps: <%= exercise.reps %></p>
-                <% if (exercise.weight) { %>
-                    <p><%= exercise.weight %>kg</p> 
-                <% } %> 
-                <% if (exercise.notes) { %>
-                    <p>Notes: <%= exercise.notes %></p>
-                <% } %>
-                <a href="/exercises/<%= exercise._id %>/edit">Edit or Delete entry</a>
-             </li>
-            <% }) %>
-        </ul>
+            </li>
+        <% }) %>
+    </ul>
 </body>
 </html>

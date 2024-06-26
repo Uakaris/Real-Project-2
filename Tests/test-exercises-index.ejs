@@ -1,3 +1,4 @@
+<!-- first draft of a new index page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
     <a href="/exercises/new">Log a new exercise</a>
     <ul>
         <% 
-        // Create an object to store the most recent exercise entry for each exercise type
+        // Object to store the most recent exercise entry for each exercise type
         const latestEntries = {};
 
         exercises.forEach((exercise) => {
@@ -37,5 +38,71 @@
             </li>
         <% }) %>
     </ul>
+</body>
+</html>
+
+// original index page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logbook</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Logbook</h1>
+    <a href="/exercises/new">Log a new exercise</a>
+        <ul>
+            <% exercises.forEach((exercise) => { %>
+             <li>
+                <h2><a href="/exercises/<%= exercise._id %>"><%= exercise.exercise %></a></h2>
+                <!-- <p>Sets: <%= exercise.sets %></p>
+                <p>Reps: <%= exercise.reps %></p>
+                <% if (exercise.weight) { %>
+                    <p><%= exercise.weight %>kg</p> 
+                <% } %> 
+                <% if (exercise.notes) { %>
+                    <p>Notes: <%= exercise.notes %></p>
+                <% } %> -->
+                <a href="/exercises/<%= exercise._id %>/edit">Edit or Delete entry</a>
+             </li>
+            <% }) %>
+        </ul>
+</body>
+</html>
+
+// original user/show.ejs page
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.username %>'s Logbook</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= user.username %>'s Logbook</h1>
+    <% if (user.exercises && user.exercises.length > 0) { %>
+        <ul>
+            <% user.exercises.forEach((exercise) => { %>
+                <li>
+                    <h2><%= exercise.exercise %></h2>
+                    <p>Sets: <%= exercise.sets %></p>
+                    <p>Reps: <%= exercise.reps %></p>
+                    <% if (exercise.weight) { %>
+                        <p>Weight: <%= exercise.weight %> kg</p>
+                    <% } %>
+                    <% if (exercise.notes) { %>
+                        <p>Notes: <%= exercise.notes %></p>
+                    <% } %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No exercises found.</p>
+    <% } %>
+    <a href="/socials">Back to Community</a>
 </body>
 </html>
