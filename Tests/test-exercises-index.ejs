@@ -106,3 +106,48 @@
     <a href="/socials">Back to Community</a>
 </body>
 </html>
+
+// old bav bar
+
+<nav>
+    <a href="/">Home</a>
+    <% if (user) { %>
+     <a href="/exercises">Logbook</a>
+     <a href="/socials">Community</a>
+     <a href="/authentication/sign-out">Sign Out</a>
+    <% } else { %>
+        <a href="/authentication/sign-in">Sign In</a>
+        <a href="/authentication/sign-up">Sign Up</a>
+    <% } %>
+</nav>
+
+// index page as at 27/06 @ 10:50am
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <p><a href="/exercises/new">Log a new exercise</a></p>
+    <ul>
+        <% 
+        const latestEntries = {};
+        
+        exercises.forEach((exercise) => {
+            if (!latestEntries[exercise.exercise] || exercise.createdAt > latestEntries[exercise.exercise].createdAt) {
+                latestEntries[exercise.exercise] = exercise;
+            }
+        });
+
+        Object.values(latestEntries).forEach((exercise) => { %>
+            <li>
+                <h2><a href="/exercises/<%= exercise._id %>"><%= exercise.exercise %></a></h2>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

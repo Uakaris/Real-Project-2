@@ -58,13 +58,13 @@ router.get('/:id', async (req, res) => {
 router.get('/:exerciseId/:entryId/edit', async (req, res) => {
     try {
         const exercise = await Exercise.findById(req.params.exerciseId);
-        if (!exercise) {
-            return res.status(404).send('Exercise not found');
-        }
+        // if (!exercise) {
+        //     return res.status(404).send('Exercise not found');
+        // }
         const historyItem = await Exercise.findById(req.params.entryId);
-        if (!historyItem) {
-            return res.status(404).send('Exercise history item not found');
-        }
+        // if (!historyItem) {
+        //     return res.status(404).send('Exercise history item not found');
+        // }
         res.render('exercises/edit.ejs', {
             exercise: exercise,
             historyItem: historyItem
@@ -91,17 +91,17 @@ router.get('/:exerciseId/:entryId/edit', async (req, res) => {
 router.put('/:exerciseId/:entryId', async (req, res) => {
     try {
         const exercise = await Exercise.findById(req.params.exerciseId);
-        if (!exercise) {
-            return res.status(404).send('Exercise not found');
-        }
+        // if (!exercise) {
+        //     return res.status(404).send('Exercise not found');
+        // }
         const historyItem = await Exercise.findById(req.params.entryId);
-        if (!historyItem) {
-            return res.status(404).send('Exercise history item not found');
-        }
+        // if (!historyItem) {
+        //     return res.status(404).send('Exercise history item not found');
+        // }
         // Check if the exercise history item belongs to the current user
-        if (!historyItem.user.equals(req.session.user._id)) {
-            return res.status(403).send('Unauthorized');
-        }
+        // if (!historyItem.user.equals(req.session.user._id)) {
+        //     return res.status(403).send('Unauthorized');
+        // }
         // Update the fields in historyItem based on req.body
         historyItem.sets = req.body.sets;
         historyItem.reps = req.body.reps;
@@ -111,7 +111,8 @@ router.put('/:exerciseId/:entryId', async (req, res) => {
         res.redirect(`/exercises/${req.params.exerciseId}`);
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal Server Error');
+        res.redirect('/exercises');
+        // res.status(500).send('Internal Server Error');
     }
 });
 
@@ -132,22 +133,23 @@ router.put('/:exerciseId/:entryId', async (req, res) => {
 router.delete('/:exerciseId/:entryId', async (req, res) => {
     try {
         const exercise = await Exercise.findById(req.params.exerciseId);
-        if (!exercise) {
-            return res.status(404).send('Exercise not found');
-        }
+        // if (!exercise) {
+        //     return res.status(404).send('Exercise not found');
+        // }
         const historyItem = await Exercise.findById(req.params.entryId);
-        if (!historyItem) {
-            return res.status(404).send('Exercise history item not found');
-        }
+        // if (!historyItem) {
+        //     return res.status(404).send('Exercise history item not found');
+        // }
         // Check if the exercise history item belongs to the current user
-        if (!historyItem.user.equals(req.session.user._id)) {
-            return res.status(403).send('Unauthorized');
-        }
+        // if (!historyItem.user.equals(req.session.user._id)) {
+        //     return res.status(403).send('Unauthorized');
+        // }
         await historyItem.deleteOne();
         res.redirect(`/exercises/${req.params.exerciseId}`);
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal Server Error');
+        res.redirect('/exercises');
+        // res.status(500).send('Internal Server Error');
     }
 });
 
