@@ -4,8 +4,6 @@ const router = express.Router();
 const User = require('../models/user');
 const Exercise = require('../models/exercise');
 
-// Put index and show routes here
-
 router.get('/', async (req, res) => {
     try {
         const users = await User.find({});
@@ -21,9 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-        // if (!user) {
-        //     return res.status(404).send('User not found');
-        // }
+    
         const exercises = await Exercise.find({ user: req.params.id })
         .sort({ createdAt: 'desc' })
         .exec();
