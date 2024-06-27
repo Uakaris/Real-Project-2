@@ -65,7 +65,7 @@ Users are able to choose from a list of specific exercises. These include,
 
 As the app develops, new exercises will be added for users to access.
 
-A specific exercise will only appear in a users vault once (their most recent log). To view the history of the specific exercise, users can click on the exercise itself to view it's history. On this page, all logs for the specific exercise can be seen so a user is able to see their progression over time.
+A specific exercise will only appear in a users vault once. To view the history of the specific exercise, users can click on the exercise itself to view it's history. On this page, all logs for the specific exercise can be seen so a user is able to see their progression over time.
 
 Users can also navigate to the community page to view other user's 'vaults'.
 
