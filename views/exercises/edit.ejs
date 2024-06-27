@@ -10,39 +10,44 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <div class="row">
-        <div class="col-md-8">
-            <h1>Edit Entry</h1>
-    <form action="/exercises/<%= exercise._id %>/<%= historyItem._id %>?_method=PUT" method="post">
-        <label for="exercise" class="form-label">Exercise</label>
-        <input list="exercises" name="exercise" class="form-control" value="<%= exercise.exercise %>"/>
-        <label class="form-label" >
-            Sets:
-            <input type="number" name="sets" class="form-control" value="<%= historyItem.sets %>" required>
-        </label>
-        <label class="form-label" >
-            Reps:
-            <input type="number" name="reps" class="form-control"  min="1" value="<%= historyItem.reps %>" required>
-        </label>
-        <label class="form-label" >
-            Weight:
-            <input type="number" name="weight" class="form-control" min="0" value="<%= historyItem.weight %>">
-        </label>
-        <label class="form-label">
-            Notes:
-            <textarea name="notes" class="form-control" ><%= historyItem.notes %></textarea>
-        </label>
-
-    </div>
-    <div class="col-md-2">
-        <button class="btn btn-secondary">Add edited exercise</button>
-    </form>
-</div>
-    <div class="col-md-2">
-    <form action="/exercises/<%= exercise._id %>/<%= historyItem._id %>?_method=DELETE" method="post">
-        <button class="btn btn-secondary" >Delete Entry</button>
-    </form>
-</div>
+    <div class="container">
+        <h1>Edit Entry</h1>
+        <form action="/exercises/<%= exercise._id %>/<%= historyItem._id %>?_method=PUT" method="post">
+            <div class="mb-3">
+                <label for="exercise" class="form-label">Exercise</label>
+                <input list="exercises" name="exercise" class="form-control" value="<%= exercise.exercise %>"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">
+                    Sets:
+                    <input type="number" name="sets" class="form-control" value="<%= historyItem.sets %>" required>
+                </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">
+                    Reps:
+                    <input type="number" name="reps" class="form-control"  min="1" value="<%= historyItem.reps %>" required>
+                </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">
+                    Weight:
+                    <input type="number" name="weight" class="form-control" min="0" value="<%= historyItem.weight %>">
+                </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">
+                    Notes:
+                    <textarea name="notes" class="form-control"><%= historyItem.notes %></textarea>
+                </label>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-secondary mb-3">Add edited exercise</button>
+            </div>
+        </form>
+        <form class="delete text-center" action="/exercises/<%= exercise._id %>/<%= historyItem._id %>?_method=DELETE" method="post">
+            <button class="btn btn-danger">Delete Entry</button>
+        </form>
     </div>
 </body>
 </html>

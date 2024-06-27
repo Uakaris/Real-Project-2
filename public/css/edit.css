@@ -3,12 +3,14 @@
     margin: 0;
 }
 
-/* div.container {
+body {
+    overflow: hidden;
+}
+
+div.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow: hidden;
-    color: white;
-} */
+}
