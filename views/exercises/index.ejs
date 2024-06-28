@@ -10,22 +10,33 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <p><a href="/exercises/new">Log a new exercise</a></p>
-    <ul>
-        <% 
-        const latestEntries = {};
-        
-        exercises.forEach((exercise) => {
-            if (!latestEntries[exercise.exercise] || exercise.createdAt > latestEntries[exercise.exercise].createdAt) {
-                latestEntries[exercise.exercise] = exercise;
-            }
-        });
+    <h3><a href="/exercises/new">Log a new exercise</a></h3>
+    <p>Click an exercise to view it's history</p>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% 
+                const latestEntries = {};
+                
+                exercises.forEach((exercise) => {
+                    if (!latestEntries[exercise.exercise] || exercise.createdAt > latestEntries[exercise.exercise].createdAt) {
+                        latestEntries[exercise.exercise] = exercise;
+                    }
+                });
 
-        Object.values(latestEntries).forEach((exercise) => { %>
-            <li>
-                <h2><a href="/exercises/<%= exercise._id %>"><%= exercise.exercise %></a></h2>
-            </li>
-        <% }) %>
-    </ul>
+                Object.values(latestEntries).forEach((exercise) => { %>
+                    <tr>
+                        <td><a href="/exercises/<%= exercise._id %>"><%= exercise.exercise %></a></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>
