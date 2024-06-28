@@ -93,3 +93,6 @@ There are plenty of things I would love to add to this app in the future. These 
 * Add [Bootstrap's](https://getbootstrap.com/docs/5.3/components/accordion/) 'Accordion' to the user's 'vault' and exercise history page. Ideally, this would allow the user to view their exercise history for specific exercises all on the same page, with some interactive CSS. I did attempt this but could not get it working in time.
 * A 1 rep max calculator. This would apply the Brzycki formula to calculate a 1 rep max for each exercise, based on a users exercise history.
 * I have left Cloudinary and Multer middleware in the code. Whilst it is not being used for anything now, I woud like to add the ability for users to add their own images to their exercise logs in the future.
+* I would also like to update a few of the redirect's when signing up and signing in.
+* I would also consider only using custom CSS to enable further customisation. I am not familiar enough with Bootstrap to fully customise it as much as I would like so custom CSS may be the better option for me at this point in time.
+* There are also a few things I need to update regarding accesibility and readability for the user.
