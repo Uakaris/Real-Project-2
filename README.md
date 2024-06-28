@@ -19,7 +19,7 @@ Once signed-up, users will need to sign in. Once signed-in, users can navigate t
 
 Once a new entry is entered into the system, users can view the entry in their vault.
 
-Users are able to choose from a list of specific exercises. These include,
+Users are able to choose from a list of specific exercises. The exercises are mostly crossfit orientated They include:
 
 * back squat
 * barbell back rack reverse lunge
